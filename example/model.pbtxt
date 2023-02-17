@@ -1,0 +1,27 @@
+name: "pipeline"
+backend: "python"
+max_batch_size: 8
+dynamic_batching {
+  max_queue_delay_microseconds: 1000
+}
+input [
+  {
+    name: "inputs"
+    data_type: TYPE_INT32	
+    dims: [1]
+  }
+]
+output [
+  {
+    name: "outputs"
+    data_type: TYPE_INT32	
+    dims: [1]
+  }
+]
+
+instance_group [
+  {
+    kind: KIND_GPU
+  }
+]
+

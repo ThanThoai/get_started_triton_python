@@ -1,0 +1,26 @@
+name: str
+
+  //@@     The name of the output.
+
+
+data_type: DataType
+
+  //@@     The data-type of the output.
+
+
+dims: int64
+
+  //@@     The dimensions/shape of the output tensor.
+
+reshape: ModelTensorReshape
+
+  //@@     The shape expected for this input by the backend. The input will
+  //@@     be reshaped to this before being presented to the backend. The
+  //@@     reshape must have the same number of elements as the input shape
+  //@@     specified by 'dims'. Optional.
+
+
+label_filename: str
+
+  //@@     The label file associated with this output. Should be specified only
+  //@@     for outputs that represent classifications. Optional.

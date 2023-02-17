@@ -1,0 +1,38 @@
+name: str
+
+  //@@     Optional name of this group of instances. If not specified the
+  //@@     name will be formed as <model name>_<group number>. The name of
+  //@@     individual instances will be further formed by a unique instance
+  //@@     number and GPU index:
+
+
+
+kind: Kind 
+
+  //@@     The kind of this instance group. Default is KIND_AUTO. If
+  //@@     KIND_AUTO or KIND_GPU then both 'count' and 'gpu' are valid and
+  //@@     may be specified. If KIND_CPU or KIND_MODEL only 'count' is valid
+  //@@     and 'gpu' cannot be specified. KIND_AUTO=0, KIND_GPU=1, KIND_CPU=2, KIND_MODEL=3
+
+
+count: int32
+
+  //@@     For a group assigned to GPU, the number of instances created for
+  //@@     each GPU listed in 'gpus'. For a group assigned to CPU the number
+  //@@     of instances created. Default is 1.
+
+
+gpus: list[int32] 
+
+  //@@     GPU(s) where instances should be available. For each GPU listed,
+  //@@     'count' instances of the model will be available. Setting 'gpus'
+  //@@     to empty (or not specifying at all) is eqivalent to listing all
+  //@@     available GPUs.
+
+
+host_policy: string 
+
+  //@@     The host policy name that the instance to be associated with.
+  //@@     The default value is set to reflect the device kind of the instance,
+  //@@     for instance, KIND_CPU is "cpu", KIND_MODEL is "model" and
+  //@@     KIND_GPU is "gpu_<gpu_id>".

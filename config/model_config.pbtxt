@@ -1,0 +1,53 @@
+name: str       #The name of the model
+
+platform: str 
+
+  #     The framework for the model. Possible values are
+  #     "tensorrt_plan", "tensorflow_graphdef",
+  #     "tensorflow_savedmodel", "onnxruntime_onnx",
+  #     "pytorch_libtorch".
+
+
+backend: str
+  
+  #      The backend used by the model.
+
+
+max_batch_size: int32
+
+  //@@     Maximum batch size allowed for inference. This can only decrease
+  //@@     what is allowed by the model itself. A max_batch_size value of 0
+  //@@     indicates that batching is not allowed for the model and the
+  //@@     dimension/shape of the input and output tensors must exactly
+  //@@     match what is specified in the input and output configuration. A
+  //@@     max_batch_size value > 0 indicates that batching is allowed and
+  //@@     so the model expects the input tensors to have an additional
+  //@@     initial dimension for the batching that is not specified in the
+  //@@     input (for example, if the model supports batched inputs of
+  //@@     2-dimensional tensors then the model configuration will specify
+  //@@     the input shape as [ X, Y ] but the model will expect the actual
+  //@@     input tensors to have shape [ N, X, Y ]). For max_batch_size > 0
+  //@@     returned outputs will also have an additional initial dimension
+  //@@     for the batch.
+
+
+input: ModelInput
+
+output: ModelOutput
+
+
+dynamic_batching: {}
+
+    //@@       If specified, enables the sequence-batching scheduling
+    //@@       policy. With sequence-batching, inference requests
+    //@@       with the same correlation ID are routed to the same
+    //@@       model instance. Multiple sequences of inference requests
+    //@@       may be batched together into a single batch to
+    //@@       improve inference throughput.
+
+
+instance_group: ModelInstanceGroup
+
+  //@@     Instances of this model. If not specified, one instance
+  //@@     of the model will be instantiated on each available GPU.
+  //@@
