@@ -5,6 +5,14 @@ import numpy as np
 
 
 class TritonPythonModel:
+
+    # @staticmethod
+    # def auto_complete_config(auto_complete_model_config):
+    #     pass
+
+    # def finalize(self):
+    #     pass
+
     def initialize(self, args):
         print("Load Model")
 
